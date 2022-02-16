@@ -10,5 +10,8 @@ namespace REST_Api_feb_2022.Data.Intefases
     {
         IEnumerable<Product> GetAll();
         Product GetById(int id);
+        void Create(Product input);
+        void Update(int id, Product input);
+        void Delete(int id);
     }
 }

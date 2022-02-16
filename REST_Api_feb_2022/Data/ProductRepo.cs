@@ -15,6 +15,24 @@ namespace REST_Api_feb_2022.Data
         {
             _context = context;
         }
+
+        public void Create(Product input)
+        {
+            _context.Products.Add(input);
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var productInDb = _context.Products.FirstOrDefault(p => p.Id == id);
+
+            if (productInDb != null)
+            {
+                _context.Remove(productInDb);
+                _context.SaveChanges();
+            }
+        }
+
         public IEnumerable<Product> GetAll()
         {
             return _context.Products.ToList();
@@ -24,6 +42,19 @@ namespace REST_Api_feb_2022.Data
         {
             var productInDb = _context.Products.FirstOrDefault(p => p.Id == id);
             return productInDb;
+        }
+
+        public void Update(int id, Product input)
+        {
+            var productInDb = _context.Products.FirstOrDefault(p => p.Id == id);
+
+            if(productInDb != null)
+            {
+                productInDb.Name = input.Name;
+                productInDb.Price = input.Price;
+
+                _context.SaveChanges();
+            }
         }
     }
 }
