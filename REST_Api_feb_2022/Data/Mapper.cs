@@ -9,6 +9,22 @@ namespace REST_Api_feb_2022.Data
 {
     public class Mapper
     {
+        public Order Map(OrderCreateDto input)
+        {
+            return new Order { 
+                Name = input.Name,
+                Date = input.Date
+            };
+        }
+        public OrderReadDto Map(Order input)
+        {
+            return new OrderReadDto { 
+                Id = input.Id,
+                Name = input.Name,
+                Date = input.Date
+            };
+        }
+
         public ProductReadDto Map(Product input, bool flag)
         {
             return new ProductReadDto

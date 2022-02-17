@@ -35,6 +35,7 @@ namespace REST_Api_feb_2022
             });
 
             services.AddScoped<IProductRepo, ProductRepo>();
+            services.AddScoped<IOrderRepo, OrderRepo>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
